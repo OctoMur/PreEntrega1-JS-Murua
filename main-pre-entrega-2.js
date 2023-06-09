@@ -6,7 +6,7 @@ const prenda5 = {item: "buzo", precio: 2300};
 const prenda6 = {item: "pantalon", precio: 1800};
 const prenda7 = {item: "zapatillas", precio: 3000};
 
-class Compra{
+class Compra{// clase de objeto compra
     constructor(){
         this.prendas = [];
         this.montoCompra = 0;
@@ -31,30 +31,35 @@ class Compra{
 }
 
 let ventas = [];
+let ventasTotales = 0;
+let ventasTotalesHistorial;
 
-function registrarCompra(compra){
-    ventas.push(compra);
+
+function registrarCompra(compra){ //guarda un objeto compra en el vector de "ventas".
+    ventas.push(compra);          
+
+
+    ingresosTotales = 0;
+    for(const venta of ventas){
+        ingresosTotales += venta.montoCompra;   //calcula la ultima venta y la suma al resto de ventas realizada (solo el monto).
+    }
+    
+    localStorage.setItem("montoVendido", ingresosTotales); //actualiza el monto total vendido durante el dia y lo guarda en el localstorage
+    console.log(localStorage);
 }
 
-let ventasTotales = 0;
 let ingresosTotales = 0;
 
-function verCompras(){
+function verCompras(){ //metodo para ver la cantidad de ventas y el total de todas realizadas en lo que va del dia
     ventasTotales = ventas.length;
-    
-    // for(let i = 0; i < ventas.length-1; i++){
-    //     ingresosTotales += ventas[i].montoCompra;
-    // }
 
-    for(const venta of ventas){
-        ingresosTotales += venta.montoCompra;
-    }
+    alert(`Ventas totales: ${ventasTotales} Ingresos totales del dia: $${ingresosTotales}`);
 }
 
 let opcion = 0;
 let cantidad = 0
 
-function comprar(){
+function comprar(){ //toma las opciones ingresadas por el usuario y realiza la compra
     const compra = new Compra();
     let agregar;
     let tarjeta;
@@ -94,19 +99,25 @@ function comprar(){
 
     compra.calcularTotal(tarjeta);
     registrarCompra(compra);
+    alert(`Total ${compra.montoCompra}`)
+}
+function cerrar(){ //un intento de simular que cierra la caja y crea un json de cuanto se vendio ese dia
+    console.log(JSON.stringify(ingresosTotales));
+}
+function verHistorial(){ //un intento de mostrar lo que registro en el json, pero en consola 
+    console.log(JSON.parse(ingresosTotales));
 }
 
-function sistema(){
-    let seguirComprando 
-    do{
-        comprar();
-        
-        seguirComprando = confirm('Desea seguir comprando?'); //
-    }while(seguirComprando === true)
 
-    verCompras();
+//si algo no queda clar durante la evaluacion, comuniquese conmigo, a estas alturas estaba medio quemado e intentaba aplicar todo incluido el json.
 
-    alert(`Ventas totales: ${ventasTotales} Ingresos totales del dia: $${ingresosTotales}`);
-}
 
-sistema();
+let btnComprar = document.getElementById("btnComprar");
+let btnVerCompras = document.getElementById("btnVerCompras");
+let btnCerrarCaja = document.getElementById("btnCerrarCaja")
+let btnVerVentasanterior = document.getElementById("btnHistorial")
+
+btnComprar.addEventListener("click", comprar);
+btnVerCompras.addEventListener("click", verCompras);
+btnCerrarCaja.addEventListener("click", cerrar);
+btnVerVentasanterior.addEventListener("click", verHistorial)
