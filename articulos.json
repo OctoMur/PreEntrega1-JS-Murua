@@ -1,0 +1,9 @@
+[
+    {"item": "Gorra", "precio": 750, "cantidad": 0, "subTotal": 0},
+    {"item": "Remera", "precio": 1000, "cantidad": 0, "subTotal": 0},
+    {"item": "Camisa", "precio": 1200, "cantidad": 0, "subTotal": 0},
+    {"item": "Campera", "precio": 2500, "cantidad": 0, "subTotal": 0},
+    {"item": "Buzo", "precio": 2300, "cantidad": 0, "subTotal": 0},
+    {"item": "Pantalon", "precio": 1800, "cantidad": 0, "subTotal": 0},
+    {"item": "Zapatillas", "precio": 3000, "cantidad": 0, "subTotal": 0}
+]

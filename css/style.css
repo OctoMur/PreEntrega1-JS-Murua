@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.divContainerCards{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    margin: 5px;
+}
+
+.card{
+    border: 1px;
+    border-radius: 5px;
+    width: 150px;
+    height: 230px;
+    background-color: gray;
+}
+
+.btnCard{
+    width: auto;
+    height: auto;
+}
