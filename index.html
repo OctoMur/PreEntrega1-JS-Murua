@@ -5,24 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <title>Document</title>
 </head>
 <body>
-    <h1>Venta de productos</h1>
-    
-    <div id="containerCards" class="divContainerCards"></div>
+    <header class="encabezado">
+        <span class="title">Tienda Online</span>
+    </header>
+    <main>
+        <div id="containerCards" class="divContainerCards"></div>
+        <div class="containerBtns">
+            <button id="btnComprar" class="btns">Comprar</button>
+            <button id="btnVerCompras" class="btns">Ver Compras</button>
+        </div>
 
-    <button id="btnComprar">Comprar</button>
-    <button id="btnVerCompras">Ver Compras</button>
+        <!-- <button id="verCarrito">Ver Carrito</button> -->
+    </main>
 
-
-
-
-
-
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="./js/articulos.js"></script>
-    <script src="./js/producto.js"></script>
     <script src="./js/compra.js"></script>
     <script src="./js/main-pre-entrega-2.js"></script>
 </body>

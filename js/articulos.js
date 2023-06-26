@@ -10,7 +10,7 @@
             divProduct.classList.add("card")
             divProduct.innerHTML = `
             <h3>${producto.item}</h3>
-            <p>Precio: $${producto.precio}</p>`
+            <p>Precio: ${producto.precio}</p>`
             
             containerCards.append(divProduct);
 
@@ -41,6 +41,21 @@
                 console.log(carrito);
 
                 localStorage.setItem("carrito", JSON.stringify(carrito));
+
+                Toastify({
+                    text: "Producto agregado",
+                    duration: 3000,
+                    destination: "https://github.com/apvarun/toastify-js",
+                    newWindow: true,
+                    close: true,
+                    gravity: "bottom", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    style: {
+                        background: "linear-gradient(to right, #8C8C8C, #4D4D4D)",
+                    },
+                    onClick: function(){} // Callback after click
+                    }).showToast();
             })
 
             const btnQuitarU = document.createElement("button"); //boton quitar unidades
@@ -61,8 +76,21 @@
                             carrito.splice(eliminarProducto, 1);
                         }
                     }
-                    }
-                
+                }
+                    Toastify({
+                        text: "Producto eliminado",
+                        duration: 3000,
+                        destination: "https://github.com/apvarun/toastify-js",
+                        newWindow: true,
+                        close: true,
+                        gravity: "bottom", // `top` or `bottom`
+                        position: "right", // `left`, `center` or `right`
+                        stopOnFocus: true, // Prevents dismissing of toast on hover
+                        style: {
+                            background: "linear-gradient(to right, #4D4D4D, #8C8C8C)",
+                        },
+                        onClick: function(){} // Callback after click
+                        }).showToast();
             })
             // console.log(carrito);
             localStorage.setItem("carrito", JSON.stringify(carrito));
