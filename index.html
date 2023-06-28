@@ -12,15 +12,22 @@
     <header class="encabezado">
         <span class="title">Tienda Online</span>
     </header>
+
     <main>
         <div id="containerCards" class="divContainerCards"></div>
         <div class="containerBtns">
             <button id="btnComprar" class="btns">Comprar</button>
             <button id="btnVerCompras" class="btns">Ver Compras</button>
+            <button id="btnVerCarrito" class="btns">Carrito</button>
         </div>
 
-        <!-- <button id="verCarrito">Ver Carrito</button> -->
+        <!-- Modal ver compras -->
+        <div id="modalLayer" class="modalLayerStyle">
+            <div id="windowCart" class="windowCartStyle"></div>
+        </div>
     </main>
+
+    <footer></footer>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
