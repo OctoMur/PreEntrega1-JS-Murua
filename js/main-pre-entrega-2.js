@@ -10,6 +10,8 @@ const ingresosTotalesInLocalStorage = JSON.parse(localStorage.getItem("ingresosT
 let ingresosTotales = ingresosTotalesInLocalStorage || 0; //asigna un valor de ingresos totales si es que se efectuaron ventas, o inicia en 0
 
 const containerCards = document.getElementById("containerCards");
+const mainCart = document.getElementById("mainCart");
+const footerCart = document.getElementById("footerCart");
 
 const btnComprar = document.getElementById("btnComprar");
 const btnVerCompras = document.getElementById("btnVerCompras");
@@ -87,8 +89,30 @@ function verCompras(){ //metodo para ver la cantidad de ventas y el monto total 
 }
 
 function verCarrito(){
-    modal.style.display = 'block';
+    limpiarCarritoHtml();
+    const productosCargados = JSON.parse(localStorage.getItem("carrito"));
+    let total = 0;
+    productosCargados.forEach(producto => {
+        const cardProductInCart = document.createElement('div');
 
+        cardProductInCart.classList.add("mainCartProduct")
+        cardProductInCart.innerHTML =`
+        <h4>${producto.item}</h4>
+        <span>${producto.cantidad}</span>
+        <span>${producto.subtotal}</span>`
+
+        mainCart.append(cardProductInCart);
+        total += producto.subtotal;
+    });
+
+    const totalValorCarrito = document.createElement('span');
+
+    totalValorCarrito.classList.add("mainCartProduct");
+    totalValorCarrito.innerText = `$${total}`;
+
+    footerCart.append(totalValorCarrito);
+
+    modal.style.display = 'block';
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = 'none';
@@ -96,8 +120,13 @@ function verCarrito(){
     };
 }
 
+function limpiarCarritoHtml(){
+    while(mainCart.firstChild){
+        mainCart.removeChild(mainCart.firstChild);
+    }
 
-
+    footerCart.removeChild(footerCart.lastChild);
+}
 btnVerCarrito.addEventListener("click", verCarrito);
 btnComprar.addEventListener("click", comprar);
 btnVerCompras.addEventListener("click", verCompras);
